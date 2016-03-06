@@ -16,6 +16,8 @@ foreach ($sources as $source){
     default:
       $inf = getInfo($source,"");
   }
-  print($source."=".$inf."\n");
-}
+  if (isset($inf)) {
+    print($source."=".$inf."\n");
+  }
+ }
 close_ems();

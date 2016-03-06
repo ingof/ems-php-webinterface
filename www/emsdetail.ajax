@@ -12,7 +12,7 @@ $i = 0;
 $lines = round(count($d)/3)+1;
 foreach ($d as $k => $v){
   $va = explode("|",$v);
-  $v = $va[0];
+  $value = $va[0];
   $age = mktime() - $va[1];
   $col = diff2col($age,2*60,array(255,255,0),array(255,255,150),array(222,222,222));
   $tcol = diff2col($age,3*60,array(0,0,0),array(0,0,0),array(150,150,150));
@@ -23,9 +23,9 @@ foreach ($d as $k => $v){
     $i=0;
   }
   $ka = explode(" ",$k." ");
-  if (trim($v) != "unavailable"){
-    if (isset($m_units[$ka[0]])) $v .= " ".$m_units[$ka[0]];
-    if (isset($m_units[$ka[1]])) $v .= " ".$m_units[$ka[1]];
+  if (trim($value) != "unavailable"){
+    if (isset($m_units[$ka[0]])) $value .= " ".$m_units[$ka[0]];
+    if (isset($m_units[$ka[1]])) $value .= " ".$m_units[$ka[1]];
   }
   $v = htmlentities($v);
   print("<tr><td><font size=-4 color=$tcol>$bold$k</u></font></td><td bgcolor=$col align=center><font size=-4 color=$tcol>$v</font></td></tr>");

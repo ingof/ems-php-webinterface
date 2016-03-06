@@ -27,7 +27,7 @@ require("/emsincludes/emsgetinfo.inc");
 require("/emsincludes/emschoosers.inc");
 flush_buffers();
 $temptemp = getHKInfo("temptemp");
-if ($temptemp==0){
+if (!isset($temptemp) || $temptemp==0){
   if (getHKInfo("tagbetr")=="on"){
     $temptemp =  getHKInfo("day");
   } else {
