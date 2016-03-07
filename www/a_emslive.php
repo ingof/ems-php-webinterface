@@ -40,7 +40,7 @@ if (!isset($temptemp) || $temptemp==0){
 <script type="text/javascript">
 
 var ttemp = <?php print($temptemp);?> ;
-var sources = new Array('heizactive','wwactive','redmode','tagbetr','autobetr','party','day','night','pause','wwtag','wwmode','zirmode','temptemp');
+var sources = new Array('heizactive','wwactive','redmode','mode','party','day','night','pause','wwtag','wwmode','zirmode','temptemp','tagbetr');
 var selsources = new Array('party','day','night','pause','wwtag','wwmode','zirmode');
 var ttempoff = <?php print($temptemp);?> ;
 var qenabled = new Array();
@@ -138,29 +138,26 @@ xmlhttp.onreadystatechange=function()
         }
         
         dispv();
-      } else if (src=="tagbetr"){
+      } else if (src=="mode"){
         var mdsel = document.getElementById("daym");
         var mnsel = document.getElementById("nightm");
-        var tdsel = document.getElementById("day");
-        var tnsel = document.getElementById("night");
-        if (val=="on"){
+        var masel = document.getElementById("autom");
+        if (val=="auto") {
+          masel.style.backgroundColor="#ffffaa";
+          mdsel.style.backgroundColor="#cccccc";
+          mnsel.style.backgroundColor="#cccccc";
+        } else if (val=="on"){
           mdsel.style.backgroundColor="#FF5555";
           mnsel.style.backgroundColor="#cccccc";
-          ttempoff = tdsel.options[tdsel.selectedIndex].value;
+          masel.style.backgroundColor="#cccccc";
         } else {
           mdsel.style.backgroundColor="#cccccc";
           mnsel.style.backgroundColor="#5555FF";
-          ttempoff = tnsel.options[tnsel.selectedIndex].value;
-        }       
-
-      } else if (src=="autobetr"){
-        var masel = document.getElementById("autom");
-        if (val=="on"){
-          masel.style.backgroundColor="#ffffaa";
-        } else {
           masel.style.backgroundColor="#cccccc";
         }       
-      
+      } else if (src=="tagbetr") {
+        var element = document.getElementById(val=="on" ? "day" : "night");
+        ttempoff = element.options[tnsel.selectedIndex].value;
       } else {
         var sel = document.getElementById(src);
         if (!sel) alert("Element "+src+" invalid!");
@@ -238,8 +235,7 @@ function setCommand(cmd, param)
   xmlhttp2=new XMLHttpRequest();
   xmlhttp2.onreadystatechange=function()
   {
-    resetEnable("tagbetr");
-    resetEnable("autobetr");
+    resetEnable("mode");
     activereq = false;
   }
   document.getElementById("statusbar").innerHTML="Befehl '"+cmd+" "+param+"' ausgeführt.";
