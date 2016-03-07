@@ -27,8 +27,7 @@ foreach ($d as $k => $v){
     if (isset($m_units[$ka[0]])) $value .= " ".$m_units[$ka[0]];
     if (isset($m_units[$ka[1]])) $value .= " ".$m_units[$ka[1]];
   }
-  $v = htmlentities($v);
-  print("<tr><td><font size=-4 color=$tcol>$bold$k</u></font></td><td bgcolor=$col align=center><font size=-4 color=$tcol>$v</font></td></tr>");
+  print("<tr><td><font size=-4 color=$tcol>$bold$k</u></font></td><td bgcolor=$col align=center><font size=-4 color=$tcol>$value</font></td></tr>");
   $i++;
 }
 ?>
