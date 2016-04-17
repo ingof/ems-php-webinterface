@@ -1,4 +1,4 @@
-<?
+<?php
 
 $rights = array("login"  => array(),
                 "public" => array());
