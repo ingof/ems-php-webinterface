@@ -34,7 +34,7 @@ foreach ($data as $k => $v){
   $d[$k]=htmlentities($v);
 }
 $desc = $scdesc[$data["servicecode"].$data["errorcode"]];
-$stoer = (strpos(" ".$desc,"Störungscode"));
+$stoer = (strpos(" ".$desc,"StÃ¶rungscode"));
 
 $col1="#dddddd";
 $col2="#ffdddd";
@@ -57,15 +57,14 @@ print("<tr><td colspan=3>");
   print("<br>");  
   print("<img src=img/".($d["hk1 summermode"]=="on"?"sun_on.png":"sun_off.png")." alt=Sommerbetrieb>&nbsp;");
   if ($stoer){
-    print("<img src=img/maint_error.png alt=Störung>&nbsp;");
+    print("<img src=img/maint_error.png alt=StÃ¶rung>&nbsp;");
   
   } else {  
     print("<img src=img/".($d["heater maintenancedue"]=="bydate"?"maint_cal.png":($d["heater maintenancedue"]=="byhours"?"maint_hour.png":"maint_off.png"))." alt='Wartung'>&nbsp;");
   }
   print("</td></tr></table>");
 print("</td></tr>");
-print("<tr><td valign=top>Betriebsart</b><br><font size=+1>".($d["hk1 daymode"]=="on"?"Tag":"Nacht")."</font><br> ".($d["hk1 automode"]=="on"?"Automatik":"manuell"));
-
+print("<tr><td valign=top>Betriebsart</b><br><font size=+1>".($d["hk1 daymode"]=="on"?"Tag":"Nacht")."</font><br> ".($d["hk1 opmode"]=="auto"?"Automatik":"Manuell"));
 
      
 print("</td>");
